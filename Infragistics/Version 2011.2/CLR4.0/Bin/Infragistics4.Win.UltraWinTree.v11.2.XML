@@ -7732,6 +7732,11 @@
             default constructor
             </summary>
         </member>
+        <member name="M:Infragistics.Win.UltraWinTree.LabelEditNode.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+        </member>
         <member name="M:Infragistics.Win.UltraWinTree.LabelEditNode.ProcessKeyMessage(System.Windows.Forms.Message@)">
             <summary>
             Processes a key message
@@ -14343,6 +14348,11 @@
             Called when the cursor leaves the bounds of a UIElement
             </summary>
             <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinTree.UltraTree.OnMouseLeave(System.EventArgs)">
+            <summary>
+            Raises the Leave event.
+            </summary>
         </member>
         <member name="M:Infragistics.Win.UltraWinTree.UltraTree.IsInputChar(System.Char)">
             <summary>

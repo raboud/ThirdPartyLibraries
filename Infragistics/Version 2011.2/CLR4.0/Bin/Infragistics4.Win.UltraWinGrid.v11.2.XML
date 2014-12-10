@@ -51585,12 +51585,12 @@
         </member>
         <member name="P:Infragistics.Win.UltraWinGrid.UltraGridColumnChooser.StyleLibraryName">
             <summary>
-            Specifies the name of the library from which the application style information will be obtained.
+            Returns or sets the name of the styleset library in the <see cref="T:Infragistics.Win.AppStyling.StyleManager"/> that should be used by the control.
             </summary>
         </member>
         <member name="P:Infragistics.Win.UltraWinGrid.UltraGridColumnChooser.StyleSetName">
             <summary>
-            Specifies the style set name.
+            Returns or sets the name of the styleset in the <see cref="T:Infragistics.Win.AppStyling.StyleManager"/> that should be used by the control.
             </summary>
         </member>
         <member name="P:Infragistics.Win.UltraWinGrid.UltraGridColumnChooser.ColumnDisplayOrder">
