@@ -498,7 +498,7 @@
             <summary>Returns a byte array of the words in the list of specified type.</summary>
         </member>
         <member name="M:Infragistics.Win.UltraWinSpellChecker.DictFile.GetDecodedFileStream">
-            <summary>Return decoded file stream</summary>
+            <summary>Return decoded file stream</summary>        
         </member>
         <member name="M:Infragistics.Win.UltraWinSpellChecker.DictFile.GetStreamDimensions(System.Int32)">
             <summary>Gets the start of the wordlist and length of list.</summary>

@@ -1368,6 +1368,20 @@
             <param name="parent">The parent of the UI element, which will be needed if the UI element must be created.</param>
             <returns>The UI element which displays the <see cref="T:Infragistics.Win.UltraWinToolbars.ApplicationMenuArea"/></returns>
         </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.ApplicationMenuAreaBase.OnToolAddedToCollection(Infragistics.Win.UltraWinToolbars.ToolBase,Infragistics.Win.UltraWinToolbars.ToolsCollectionBase)">
+            <summary>
+            Called when a tool is added to the collection.
+            </summary>
+            <param name="tool"></param>
+            <param name="toolsCollection"></param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.ApplicationMenuAreaBase.OnToolRemovedFromCollection(Infragistics.Win.UltraWinToolbars.ToolBase,Infragistics.Win.UltraWinToolbars.ToolsCollectionBase)">
+            <summary>
+            Called when a tool is removed from the collection.
+            </summary>
+            <param name="tool"></param>
+            <param name="toolsCollection"></param>
+        </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.ApplicationMenuAreaBase.OnDispose">
             <summary>
             Invoked when the object is disposed.
@@ -3472,6 +3486,12 @@
         <member name="M:Infragistics.Win.UltraWinToolbars.UltraToolbarsManagerRole.OnStyleChanged">
             <summary>
             Invoked when the style information for the component has changed.
+            </summary>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.UltraToolbarsManagerRole.OnStyleCachedCleared">
+            <summary>
+            Virtual method called after OnStyleChanged and after the style cache has been cleared. This is to 
+            allow a component to synchronously update itself after the caching has been cleared. 
             </summary>
         </member>
         <member name="P:Infragistics.Win.UltraWinToolbars.UltraToolbarsManagerRole.Manager">
@@ -12705,6 +12725,21 @@
             Display Office 2010 application menu
             </summary>
         </member>
+        <member name="F:Infragistics.Win.UltraWinToolbars.KeyTipActivationResult.Succeeded">
+            <summary>
+            Actication was successful
+            </summary>
+        </member>
+        <member name="F:Infragistics.Win.UltraWinToolbars.KeyTipActivationResult.Failed">
+            <summary>
+            Activation failed
+            </summary>
+        </member>
+        <member name="F:Infragistics.Win.UltraWinToolbars.KeyTipActivationResult.Delay">
+            <summary>
+            Activation resulted in some process that requires a delay before showing the KeyTips. The caller should wait until the IKeyTipProvider.ActivationDelayComplete event fires before showing the keytips. 
+            </summary>
+        </member>
         <member name="T:Infragistics.Win.UltraWinToolbars.ToolbarsEventManager">
             <summary>
             Class for managing an UltraToolbar's events. It maintains an enabled flag for each event as well as a nested 'in progress' count and it exposes events for firing each event.
@@ -16946,6 +16981,20 @@
             </summary>
             <param name="info">The object to be populated with the serialization data.</param>
             <param name="context">Provides info about the destination of this serialization.</param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.NavigationMenu.OnToolAddedToCollection(Infragistics.Win.UltraWinToolbars.ToolBase,Infragistics.Win.UltraWinToolbars.ToolsCollectionBase)">
+            <summary>
+            Called when a tool is added to the collection.
+            </summary>
+            <param name="tool"></param>
+            <param name="toolsCollection"></param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.NavigationMenu.OnToolRemovedFromCollection(Infragistics.Win.UltraWinToolbars.ToolBase,Infragistics.Win.UltraWinToolbars.ToolsCollectionBase)">
+            <summary>
+            Called when a tool is removed from the collection.
+            </summary>
+            <param name="tool"></param>
+            <param name="toolsCollection"></param>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.NavigationMenu.Reset">
             <summary>
@@ -30509,6 +30558,13 @@
             <param name="appearance">The appearance structure to initialize.</param>
             <param name="requestedProps">The properties that are needed.</param>
             <param name="groupAreaUIRole">The <see cref="T:Infragistics.Win.AppStyling.UIRole"/> of the group area.</param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.PopupGalleryTool.IsItemVisible(Infragistics.Win.UltraWinToolbars.GalleryToolItem)">
+            <summary>
+            An <see cref="T:Infragistics.Win.UltraWinToolbars.GalleryToolItem"/> is considered visible if a group contains the item and the group is filtered in.  
+            </summary>
+            <param name="galleryToolItem">The item to compare.</param>
+            <returns>Returns true if the <see cref="T:Infragistics.Win.UltraWinToolbars.GalleryToolItem"/> is contained by a group and that group is filtered in, false otherwise.</returns>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.PopupGalleryTool.OnGalleryToolActiveItemChange(Infragistics.Win.UltraWinToolbars.GalleryToolItemEventArgs)">
             <summary>

@@ -13363,6 +13363,14 @@
             Returns the maximum allowable value.
             </summary>
         </member>
+        <member name="M:Infragistics.Win.UltraWinEditors.TimeSpanEditorOwner.IsKeyMapped(System.Windows.Forms.Keys,Infragistics.Win.EmbeddableUIElementBase)">
+            <summary>
+            Called by an embeddable editor to determine whether the specified key should be handled by the owner
+            </summary>
+            <param name="keyData"></param>
+            <param name="element">The EmbeddableUIElementBase-derived element</param>
+            <returns>If the owner returns true, the editor should not perform its default keyboard processing</returns>
+        </member>
         <member name="T:Infragistics.Win.UltraWinEditors.TimeSpanEditorValidationErrorEventArgs">
             <summary>
             Event arguments class for the

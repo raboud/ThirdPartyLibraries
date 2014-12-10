@@ -1390,6 +1390,12 @@
             </summary>
             <returns>The calculated text base line.</returns>
         </member>
+        <member name="M:Infragistics.Win.UltraWinEditors.TextEditorControlBaseDesigner.InitializeNewComponent(System.Collections.IDictionary)">
+            <summary>
+            Initializes a newly created component.
+            </summary>
+            <param name="defaultValues">A name/value dictionary of default values to apply to properties. May be null if no default values are specified.</param>
+        </member>
         <member name="T:Infragistics.Win.UltraWinEditors.UltraWinCalc.UltraCalculatorDropDownDesigner">
             <summary>
             Designer for <see cref="T:Infragistics.Win.UltraWinEditors.UltraWinCalc.UltraCalculatorDropDown"/> control.
@@ -4102,6 +4108,12 @@
             <summary>
             Initializes a new <b>UltraComboDesigner</b>
             </summary>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinGrid.Design.UltraComboDesigner.InitializeNewComponent(System.Collections.IDictionary)">
+            <summary>
+            Initializes a newly created component.
+            </summary>
+            <param name="defaultValues">A name/value dictionary of default values to apply to properties. May be null if no default values are specified.</param>
         </member>
         <member name="P:Infragistics.Win.UltraWinGrid.Design.UltraComboDesigner.SelectionRules">
             <summary>

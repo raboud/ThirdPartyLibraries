@@ -5452,6 +5452,34 @@
             <p class="body">The default implementation returns the Func_CategoryURL_Template resource string. The first substitution string argument '{0}' will be replaced by the Func_FUNCTIONNAME_CategoryURL resource. The second substitution string is the Function Name."</p>
             </remarks>
         </member>
+        <member name="T:Infragistics.Win.CalcEngine.UltraCalcBinaryOperatorBase">
+            <summary>
+            Abstract base class for binary operator functions.
+            </summary>
+        </member>
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcBinaryOperatorBase.Evaluate(Infragistics.Win.CalcEngine.UltraCalcNumberStack,System.Int32)">
+            <summary>
+            Evaluates the function against the arguments on the number stack
+            </summary>
+            <param name="numberStack">Formula number stack containing function arguments</param>
+            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
+            <returns>An UltraCalcValue represents the result of the function evaluation.</returns>
+        </member>
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcBinaryOperatorBase.Evaluate(Infragistics.Win.CalcEngine.UltraCalcValue,Infragistics.Win.CalcEngine.UltraCalcValue)">
+            <summary>
+            Evaluates the the binary operator with the specified arguments and returns the result.
+            </summary>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcBinaryOperatorBase.MinArgs">
+            <summary>
+            Minimum number of arguments required for the function.
+            </summary>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcBinaryOperatorBase.MaxArgs">
+            <summary>
+            Maximum number of arguments required for the function.
+            </summary>
+        </member>
         <member name="T:Infragistics.Win.CalcEngine.UltraCalcFunctionAverage">
             <summary>
             Calculates an average (arithmetic mean) for a series of numbers.
@@ -5606,27 +5634,14 @@
             '+' Addition formula operator (1+2)
             </summary>
         </member>
-        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionPlus.Evaluate(Infragistics.Win.CalcEngine.UltraCalcNumberStack,System.Int32)">
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionPlus.Evaluate(Infragistics.Win.CalcEngine.UltraCalcValue,Infragistics.Win.CalcEngine.UltraCalcValue)">
             <summary>
-            Evaluates the function against the arguments on the number stack
+            Evaluates the the binary operator with the specified arguments and returns the result.
             </summary>
-            <param name="numberStack">Formula number stack containing function arguments</param>
-            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
-            <returns>An <see cref="T:Infragistics.Win.CalcEngine.UltraCalcValue"/> that represents the result of the function evaluation.</returns>
         </member>
         <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionPlus.Name">
             <summary>
             Function name used to reference the function in a formula
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionPlus.MinArgs">
-            <summary>
-            Minimum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionPlus.MaxArgs">
-            <summary>
-            Maximum number of arguments required for the function
             </summary>
         </member>
         <member name="T:Infragistics.Win.CalcEngine.UltraCalcFunctionMinus">
@@ -5634,27 +5649,14 @@
             '-' Subtraction formula operator (3-2)
             </summary>
         </member>
-        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionMinus.Evaluate(Infragistics.Win.CalcEngine.UltraCalcNumberStack,System.Int32)">
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionMinus.Evaluate(Infragistics.Win.CalcEngine.UltraCalcValue,Infragistics.Win.CalcEngine.UltraCalcValue)">
             <summary>
-            Evaluates the function against the arguments on the number stack
+            Evaluates the the binary operator with the specified arguments and returns the result.
             </summary>
-            <param name="numberStack">Formula number stack containing function arguments</param>
-            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
-            <returns>An <see cref="T:Infragistics.Win.CalcEngine.UltraCalcValue"/> that represents the result of the function evaluation.</returns>
         </member>
         <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionMinus.Name">
             <summary>
             Function name used to reference the function in a formula
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionMinus.MinArgs">
-            <summary>
-            Minimum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionMinus.MaxArgs">
-            <summary>
-            Maximum number of arguments required for the function
             </summary>
         </member>
         <member name="T:Infragistics.Win.CalcEngine.UltraCalcFunctionPercent">
@@ -5690,27 +5692,14 @@
             '*' Multiplication formula operator (2*3)
             </summary>
         </member>
-        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionMultiply.Evaluate(Infragistics.Win.CalcEngine.UltraCalcNumberStack,System.Int32)">
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionMultiply.Evaluate(Infragistics.Win.CalcEngine.UltraCalcValue,Infragistics.Win.CalcEngine.UltraCalcValue)">
             <summary>
-            Evaluates the function against the arguments on the number stack
+            Evaluates the the binary operator with the specified arguments and returns the result.
             </summary>
-            <param name="numberStack">Formula number stack containing function arguments</param>
-            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
-            <returns>An <see cref="T:Infragistics.Win.CalcEngine.UltraCalcValue"/> that represents the result of the function evaluation.</returns>
         </member>
         <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionMultiply.Name">
             <summary>
             Function name used to reference the function in a formula
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionMultiply.MinArgs">
-            <summary>
-            Minimum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionMultiply.MaxArgs">
-            <summary>
-            Maximum number of arguments required for the function
             </summary>
         </member>
         <member name="T:Infragistics.Win.CalcEngine.UltraCalcFunctionDivide">
@@ -5718,27 +5707,14 @@
             '/' Division formula operator (3/2)
             </summary>
         </member>
-        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionDivide.Evaluate(Infragistics.Win.CalcEngine.UltraCalcNumberStack,System.Int32)">
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionDivide.Evaluate(Infragistics.Win.CalcEngine.UltraCalcValue,Infragistics.Win.CalcEngine.UltraCalcValue)">
             <summary>
-            Evaluates the function against the arguments on the number stack
+            Evaluates the the binary operator with the specified arguments and returns the result.
             </summary>
-            <param name="numberStack">Formula number stack containing function arguments</param>
-            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
-            <returns>An <see cref="T:Infragistics.Win.CalcEngine.UltraCalcValue"/> that represents the result of the function evaluation.</returns>
         </member>
         <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionDivide.Name">
             <summary>
             Function name used to reference the function in a formula
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionDivide.MinArgs">
-            <summary>
-            Minimum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionDivide.MaxArgs">
-            <summary>
-            Maximum number of arguments required for the function
             </summary>
         </member>
         <member name="T:Infragistics.Win.CalcEngine.UltraCalcFunctionConcat">
@@ -7529,7 +7505,7 @@
             specified base.
             </summary>
             <remarks>
-            <p class="body">LOG(value, base)</p>
+            <p class="body">LOG(value, [base])</p>
             <p class="body">Value is a real number that you want to calculate the logarithm
             to <em>base</em> for. This number must be positive, as the logarithm
             is undefined for negative numbers.</p>
@@ -13050,6 +13026,133 @@
             </summary>
         </member>
         <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionIfError.MaxArgs">
+            <summary>
+            Maximum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="T:Infragistics.Win.CalcEngine.UltraCalcFunctionCountA">
+            <summary>
+            Counts how many cells are not blank. 
+            </summary>
+            <remarks>
+            <p class="body">COUNTA(Value1, Value2, ..., ValueN)</p>
+            <p class="body">Value1, value2, ... valueN can be references to different data structures,
+            such as columns. Each non-blank value is counted.</p>
+            <p class="body">
+            When a reference is a range reference, only the non-blank values within the range will be counted.
+            </p>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionCountA.Evaluate(Infragistics.Win.CalcEngine.UltraCalcNumberStack,System.Int32)">
+            <summary>
+            Evaluates the function against the arguments on the number stack
+            </summary>
+            <param name="numberStack">Formula number stack containing function arguments</param>
+            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
+            <returns>An <see cref="T:Infragistics.Win.CalcEngine.UltraCalcValue"/> that represents the result of the function evaluation.</returns>
+        </member>
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionCountA.CanParameterBeEnumerable(System.Int32)">
+            <summary>
+            Determines whether the parameter at the specified index will accept an enumerable reference.
+            </summary>
+            <param name="parameterIndex">In 0-based index of the parameter.</param>
+            <returns>
+            True if the parameter at the specified index can accept enumerable references; False otherwise or if the parameter is out of range for this function.
+            </returns>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionCountA.Name">
+            <summary>
+            Function name used to reference the function in a formula
+            </summary>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionCountA.MinArgs">
+            <summary>
+            Minimum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionCountA.MaxArgs">
+            <summary>
+            Maximum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="T:Infragistics.Win.CalcEngine.UltraCalcFunctionSearch">
+            <summary>
+            Returns the 1-based index of one string within another, searching case insensitively.
+            </summary>
+            <remarks>
+            <p class="body">SEARCH(search_text, value, [start_index])</p>
+            <p class="body">search_text is the text to find in value.</p>
+            <p class="body">value is the text in which to find search_text.</p>
+            <p class="body">start_index is the 1-based index in which to start the search (if omitted, the start_index is 1).</p>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionSearch.Evaluate(Infragistics.Win.CalcEngine.UltraCalcNumberStack,System.Int32)">
+            <summary>
+            Evaluates the function against the arguments on the number stack
+            </summary>
+            <param name="numberStack">Formula number stack containing function arguments</param>
+            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
+            <returns>An UltraCalcValue represents the result of the function evaluation.</returns>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionSearch.Name">
+            <summary>
+            Function name used to reference the function in a formula
+            </summary>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionSearch.MinArgs">
+            <summary>
+            Minimum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionSearch.MaxArgs">
+            <summary>
+            Maximum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="T:Infragistics.Win.CalcEngine.UltraCalcFunctionSearchB">
+            <summary>
+            Returns the 1-based index of one string within another, searching case insensitively.
+            </summary>
+            <remarks>
+            <p class="body">SEARCHB(search_text, value, [start_index])</p>
+            <p class="body">search_text is the text to find in value.</p>
+            <p class="body">value is the text in which to find search_text.</p>
+            <p class="body">start_index is the 1-based index in which to start the search (if omitted, the start_index is 1).</p>
+            </remarks>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionSearchB.Name">
+            <summary>
+            Function name used to reference the function in a formula
+            </summary>
+        </member>
+        <member name="T:Infragistics.Win.CalcEngine.UltraCalcFunctionAveDev">
+            <summary>
+            Returns the average deviation from the average of all numeric values.
+            </summary>
+            <remarks>
+            <p class="body">AVEDEV(number1, number2, ...)</p>
+            <p class="body">Number1, number2, ... are one or more numeric values or references to numeric values.</p>
+            </remarks>
+        </member>
+        <member name="M:Infragistics.Win.CalcEngine.UltraCalcFunctionAveDev.Evaluate(Infragistics.Win.CalcEngine.UltraCalcNumberStack,System.Int32)">
+            <summary>
+            Evaluates the function against the arguments on the number stack
+            </summary>
+            <param name="numberStack">Formula number stack containing function arguments</param>
+            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
+            <returns>An UltraCalcValue represents the result of the function evaluation.</returns>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionAveDev.Name">
+            <summary>
+            Function name used to reference the function in a formula
+            </summary>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionAveDev.MinArgs">
+            <summary>
+            Minimum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="P:Infragistics.Win.CalcEngine.UltraCalcFunctionAveDev.MaxArgs">
             <summary>
             Maximum number of arguments required for the function
             </summary>
