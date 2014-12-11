@@ -14987,6 +14987,11 @@
             </p>
             </remarks>
         </member>
+        <member name="M:Infragistics.Win.UltraWinTree.UltraTree.OnFontChanged(System.EventArgs)">
+            <summary>
+            Called when the font is changed.
+            </summary>
+        </member>
         <member name="M:Infragistics.Win.UltraWinTree.UltraTree.Refresh">
             <summary>
             Invalidates and updates the control immediately
