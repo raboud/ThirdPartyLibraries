@@ -6490,16 +6490,6 @@
             Restores the value of the <see cref="P:Infragistics.Win.UltraWinGrid.CheckedListSettings.CheckStateMember"/> property to its default.
             </summary>
         </member>
-        <member name="M:Infragistics.Win.UltraWinGrid.CheckedListSettings.ShouldSerializeHeaderCheckBoxEventFiring">
-            <summary>
-            Returns whether the <see cref="P:Infragistics.Win.UltraWinGrid.CheckedListSettings.HeaderCheckBoxEventFiring"/> property requires serialization.
-            </summary>
-        </member>
-        <member name="M:Infragistics.Win.UltraWinGrid.CheckedListSettings.ResetHeaderCheckBoxEventFiring">
-            <summary>
-            Restores the value of the <see cref="P:Infragistics.Win.UltraWinGrid.CheckedListSettings.HeaderCheckBoxEventFiring"/> property to its default.
-            </summary>
-        </member>
         <member name="M:Infragistics.Win.UltraWinGrid.CheckedListSettings.ShouldSerialize">
             <summary>
             Returns whether this <see cref="T:Infragistics.Win.UltraWinGrid.CheckedListSettings">CheckedListSettings</see> instance requires serialization.
@@ -6550,24 +6540,6 @@
             <seealso cref="P:Infragistics.Win.UltraWinGrid.UltraCombo.CheckedRows">CheckedRows property (UltraCombo class)</seealso>
             <seealso cref="P:Infragistics.Win.UltraWinGrid.UltraDropDownBase.ValueMember">ValueMember property (UltraCombo class)</seealso>
             
-        </member>
-        <member name="P:Infragistics.Win.UltraWinGrid.CheckedListSettings.HeaderCheckBoxEventFiring">
-            <summary>
-            Returns or sets a value which determines whether the ValueChanged
-            event fires for each cell whose value changes as a result of changes in the header
-            checkbox value, or only once after all cell values have been changed.
-            </summary>
-            <remarks>
-            <p class="body">
-            When a column header's CheckBoxVisibility property is set to a value which causes a checkbox
-            to appear on the header, and that checkbox is clicked, the value of each cell in that column
-            may be changed, subsequently causing the
-            control's ValueChanged event to fire. This can affect performance in cases where the control
-            has a relatively large number of rows. Setting this property to 'OnHeaderCheckboxValueChange'
-            improves performance by deferring the firing of the ValueChanged event until after each cell's
-            value has been changed.
-            </p>
-            </remarks>
         </member>
         <member name="T:Infragistics.Win.UltraWinGrid.CheckedRowsCollection">
             <summary>
@@ -6651,30 +6623,6 @@
         <member name="P:Infragistics.Win.UltraWinGrid.CheckedRowsCollection.IsReadOnly">
             <summary>
             Returns true since this collection cannot be modified.
-            </summary>
-        </member>
-        <member name="T:Infragistics.Win.UltraWinGrid.HeaderCheckBoxEventFiring">
-            <summary>
-            Constants which determine whether the ValueChanged
-            event fires for each cell whose value changes as a result of changes in the header
-            checkbox value, or only once after all cell values have been changed.
-            </summary>
-        </member>
-        <member name="F:Infragistics.Win.UltraWinGrid.HeaderCheckBoxEventFiring.Default">
-            <summary>
-            Default behavior; resolves to 'OnCellValueChange'.
-            </summary>
-        </member>
-        <member name="F:Infragistics.Win.UltraWinGrid.HeaderCheckBoxEventFiring.OnCellValueChange">
-            <summary>
-            The ValueChanged event fires for each cell whose value has changed
-            as a result of the header checkbox value change.
-            </summary>
-        </member>
-        <member name="F:Infragistics.Win.UltraWinGrid.HeaderCheckBoxEventFiring.OnHeaderCheckboxValueChange">
-            <summary>
-            The ValueChanged event fires only once for each change in the
-            header checkbox value.
             </summary>
         </member>
         <member name="T:Infragistics.Win.UltraWinGrid.UltraGridChildBand">
@@ -38677,13 +38625,6 @@
             Property id identifying AllowCancelAsyncExport property.
             </summary>
         </member>
-        <member name="F:Infragistics.Win.UltraWinGrid.PropertyIds.HeaderCheckBoxEventFiring">
-            <summary>
-            The
-            <see cref="P:Infragistics.Win.UltraWinGrid.CheckedListSettings.HeaderCheckBoxEventFiring">HeaderCheckBoxEventFiring</see>
-            property.
-            </summary>
-        </member>
         <member name="T:Infragistics.Win.UltraWinGrid.ResolveAppearanceContext">
             <summary>
             This structure is used to pass around context information
@@ -40721,7 +40662,7 @@
             the region's extent
             </summary>
         </member>
-        <member name="M:Infragistics.Win.UltraWinGrid.RowScrollRegion.AreRowsSelectionCompatible(Infragistics.Win.UltraWinGrid.UltraGridRow,Infragistics.Win.UltraWinGrid.UltraGridRow,System.Boolean)">
+        <member name="M:Infragistics.Win.UltraWinGrid.RowScrollRegion.AreRowsSelectionCompatible(Infragistics.Win.UltraWinGrid.UltraGridRow,Infragistics.Win.UltraWinGrid.UltraGridRow)">
             <summary>
             Returns true if two rows are selection compatible. 
             Whether they belong to the same band and if they are at the
@@ -40729,7 +40670,6 @@
             </summary>
             <param name="row1"></param>
             <param name="row2"></param>
-            <param name="isCellSelection">Indicates if we are in the process of selecting cells (as opposed to rows).</param>
             <returns></returns>
         </member>
         <member name="M:Infragistics.Win.UltraWinGrid.RowScrollRegion.OnDispose">
@@ -46331,11 +46271,6 @@
             The preferred size of the dropdown.
             </summary>
         </member>
-        <member name="P:Infragistics.Win.UltraWinGrid.UltraDropDownBase.Infragistics#Win#IDropDownResizeHandleOwner#DisplayStyle">
-            <summary>
-            Returns the EmbeddableElementDisplayStyle of the IValueListOwner
-            </summary>
-        </member>
         <member name="M:Infragistics.Win.UltraWinGrid.UltraCombo.#ctor">
             <summary>
             Initializes a new <see cref="T:Infragistics.Win.UltraWinGrid.UltraCombo"/>
@@ -49483,12 +49418,7 @@
             <remarks>
             <p class="body">The <see cref="P:Infragistics.Win.UltraWinGrid.InitializeRowEventArgs.Row"/> argument returns a reference to an <see cref="T:Infragistics.Win.UltraWinGrid.UltraGridRow"/> object that can be used to set properties of, and invoke methods on, the row being displayed. You can use this reference to access any of the returned row's properties or methods.</p>
             <p class="body">The <see cref="P:Infragistics.Win.UltraWinGrid.InitializeRowEventArgs.ReInitialize"/> argument can be used to determine if the row is being initialized for the first time, such as when the <see cref="T:Infragistics.Win.UltraWinGrid.UltraDropDown"/> is initially loading data, or whether it is being reinitialized, such as when the <see cref="M:Infragistics.Win.UltraWinGrid.RowsCollection.Refresh(Infragistics.Win.UltraWinGrid.RefreshRow)"/> method is called.</p>
-            <p class="body">This event provides an opportunity to perform actions on the row after it is created, such as populating an unbound cell or changing a cell's color based on its value.</p>
-            <p class="body">When is the InitializeRow event raised?</p>
-            <p class="body"> - Once for each row after it is initially created. In this case, e.ReInitialize is False.</p>
-            <p class="body"> - Once for each cell value, bound or unbound, that changes in each row.  In this case, e.ReInitialize is True.  Note: This event will NOT be raised recursively if cell values are changed by logic within the event handler itself.</p>
-            <p class="body"> - Once for each row when the WinGrid's Rows.Refresh method is called with the FireInitializeRow parameter.  In this case, e.ReInitialize is True.</p>
-            <p class="body"> - Note:  When you print or export the grid, the rows are cloned, so InitializeRow will be raised for each of the newly-cloned rows, with e.ReInitialize = False.</p>
+            <p class="body">This event is generated once for each row being displayed or printed and provides an opportunity to perform actions on the row before it is rendered, such as populating an unbound cell or changing a cell's color based on its value.</p>
             <p class="body">The <see cref="P:Infragistics.Win.UltraWinGrid.UltraGridLayout.ViewStyle"/> and <see cref="P:Infragistics.Win.UltraWinGrid.UltraGridLayout.ViewStyleBand"/> properties of the <see cref="P:Infragistics.Win.UltraWinGrid.UltraGridBase.DisplayLayout"/> object are read-only in this event procedure.</p>
             <seealso cref="E:Infragistics.Win.UltraWinGrid.UltraGrid.InitializeGroupByRow"/>
             <seealso cref="E:Infragistics.Win.UltraWinGrid.UltraGrid.InitializeLayout"/>
@@ -51585,12 +51515,12 @@
         </member>
         <member name="P:Infragistics.Win.UltraWinGrid.UltraGridColumnChooser.StyleLibraryName">
             <summary>
-            Returns or sets the name of the styleset library in the <see cref="T:Infragistics.Win.AppStyling.StyleManager"/> that should be used by the control.
+            Specifies the name of the library from which the application style information will be obtained.
             </summary>
         </member>
         <member name="P:Infragistics.Win.UltraWinGrid.UltraGridColumnChooser.StyleSetName">
             <summary>
-            Returns or sets the name of the styleset in the <see cref="T:Infragistics.Win.AppStyling.StyleManager"/> that should be used by the control.
+            Specifies the style set name.
             </summary>
         </member>
         <member name="P:Infragistics.Win.UltraWinGrid.UltraGridColumnChooser.ColumnDisplayOrder">

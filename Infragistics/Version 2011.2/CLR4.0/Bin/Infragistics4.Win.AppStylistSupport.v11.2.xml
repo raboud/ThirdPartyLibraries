@@ -2822,11 +2822,6 @@
             tooltip displayed since it is only those controls that are utilizing the library specified.</p>
             </remarks>
         </member>
-        <member name="P:Infragistics.Win.AppStyling.Runtime.AppStylistRuntime.CurrentFileName">
-            <summary>
-            The file name associated with the Application Style Library currently in memory. May be null.
-            </summary>
-        </member>
         <member name="T:Infragistics.Win.AppStyling.Runtime.MainForm">
             <summary>
             Summary description for MainForm.
@@ -2847,11 +2842,6 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.AppStyling.Runtime.MainForm.CurrentFileName">
-            <summary>
-            The file name associated with the Application Style Library currently in memory.
             </summary>
         </member>
         <member name="T:Infragistics.Win.AppStyling.Runtime.PropertiesForm">
@@ -2950,11 +2940,6 @@
         <member name="P:Infragistics.Win.AppStyling.Runtime.strings.ColorCategoryManager_ColorCategoriesGroupBoxText">
             <summary>
               Looks up a localized string similar to Color Category Definitions.
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.AppStyling.Runtime.strings.ColorCategoryManager_ColorCategoryManager_Label">
-            <summary>
-              Looks up a localized string similar to ColorCategory Manager.
             </summary>
         </member>
         <member name="P:Infragistics.Win.AppStyling.Runtime.strings.ColorCategoryManager_ColumnHeader_Appearance">
@@ -3885,16 +3870,6 @@
         <member name="P:Infragistics.Win.AppStyling.Runtime.strings.PromptToSaveStyleLibrary_Dialog_Title">
             <summary>
               Looks up a localized string similar to NetAdvantage AppStylist for Windows Forms.
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.AppStyling.Runtime.strings.PropertiesForm_Dialog_NothingSelected_Text">
-            <summary>
-              Looks up a localized string similar to Nothing Selected.
-            </summary>
-        </member>
-        <member name="P:Infragistics.Win.AppStyling.Runtime.strings.PropertiesForm_Dialog_ObjectSelected_Text">
-            <summary>
-              Looks up a localized string similar to Settings for &apos;{0}&apos;.
             </summary>
         </member>
         <member name="P:Infragistics.Win.AppStyling.Runtime.strings.PropertyEditor_BackgroundChunk_Alpha_Label">

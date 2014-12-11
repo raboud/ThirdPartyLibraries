@@ -6198,36 +6198,6 @@
             True if the parameter at the specified index can accept enumerable references; False otherwise or if the parameter is out of range for this function.
             </returns>
         </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.ExcelCalcFunction.DoesParameterAllowIntermediateResultArray(System.Int32,System.Boolean)">
-            <summary>
-            Determines whether the function accepts an intermediate result array created by evaluating a nested function
-            on a per-element basis of an array or region parameter when a single value is expected.
-            </summary>
-            <remarks>
-            <p class="body">
-            An intermediate result array will be generated when multiple values are specified where a single value is expected.
-            For example, the following formula will generate the value 15: =SUM(10/{1,2}). This is because "10/{1,2}" will 
-            result in an intermediate result array of {10/1,10/2}, or {10,5}. Then each element is summed up to result in the 
-            value 15. However, the SUM function does not allow intermediate result arrays for region references. So a function
-            such as =SUM(10/D6:E7) will result in a #VALUE! error. Unlike the SUM function, the LOOKUP function allows intermediate 
-            result arrays from region references. So a formula like LOOKUP(10,D6:E7*2) will return a correct result if the value 10 
-            can be found in the following intermediate result array when using the normal LOOKUP function logic: {D6*2,E6*2; D7*2,E7*2}.
-            Therefore, SUM would return True from this method only when <paramref name="isCreatedFromRegionReference"/> is False 
-            and LOOKUP would return True from this method always (for a <paramref name="parameterIndex"/> value of 1 in this example).
-            </p>
-            <p class="note">
-            <b>Note:</b> if this function is being called in an array formula, the restrictions are relaxed in the following way: 
-            if the function supports intermediate result arrays created from constant array, it will also support intermediate 
-            result arrays created from region references, so the <paramref name="isCreatedFromRegionReference"/> value will always 
-            be passed in as False.
-            </p>
-            </remarks>
-            <param name="parameterIndex">The 0-based index of parameter in which the intermediate array will be passed.</param>
-            <param name="isCreatedFromRegionReference">
-            True if the value which will generate the intermediate result array is a region reference; False if it is a constant array.
-            </param>
-            <returns>True to allow intermediate result arrays for the specified parameter; False otherwise.</returns>
-        </member>
         <member name="P:Infragistics.Documents.Excel.CalcEngine.ExcelCalcFunction.IsAlwaysDirty">
             <summary>
             Indicates whether the results of the function is always dirty.
@@ -6252,34 +6222,6 @@
             <summary>
             Base class for the built in functions.
             </summary>	
-        </member>
-        <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcBinaryOperatorBase">
-            <summary>
-            Abstract base class for binary operator functions.
-            </summary>
-        </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcBinaryOperatorBase.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
-            <summary>
-            Evaluates the function against the arguments on the number stack
-            </summary>
-            <param name="numberStack">Formula number stack containing function arguments</param>
-            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
-            <returns>An UltraCalcValue represents the result of the function evaluation.</returns>
-        </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcBinaryOperatorBase.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue,Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue)">
-            <summary>
-            Evaluates the the binary operator with the specified arguments and returns the result.
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcBinaryOperatorBase.MinArgs">
-            <summary>
-            Minimum number of arguments required for the function.
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcBinaryOperatorBase.MaxArgs">
-            <summary>
-            Maximum number of arguments required for the function.
-            </summary>
         </member>
         <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionAverage">
             <summary>
@@ -6435,14 +6377,27 @@
             '+' Addition formula operator (1+2)
             </summary>
         </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionPlus.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue,Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue)">
+        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionPlus.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
             <summary>
-            Evaluates the the binary operator with the specified arguments and returns the result.
+            Evaluates the function against the arguments on the number stack
             </summary>
+            <param name="numberStack">Formula number stack containing function arguments</param>
+            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
+            <returns>An <see cref="T:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue"/> that represents the result of the function evaluation.</returns>
         </member>
         <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionPlus.Name">
             <summary>
             Function name used to reference the function in a formula
+            </summary>
+        </member>
+        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionPlus.MinArgs">
+            <summary>
+            Minimum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionPlus.MaxArgs">
+            <summary>
+            Maximum number of arguments required for the function
             </summary>
         </member>
         <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMinus">
@@ -6450,14 +6405,27 @@
             '-' Subtraction formula operator (3-2)
             </summary>
         </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMinus.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue,Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue)">
+        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMinus.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
             <summary>
-            Evaluates the the binary operator with the specified arguments and returns the result.
+            Evaluates the function against the arguments on the number stack
             </summary>
+            <param name="numberStack">Formula number stack containing function arguments</param>
+            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
+            <returns>An <see cref="T:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue"/> that represents the result of the function evaluation.</returns>
         </member>
         <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMinus.Name">
             <summary>
             Function name used to reference the function in a formula
+            </summary>
+        </member>
+        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMinus.MinArgs">
+            <summary>
+            Minimum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMinus.MaxArgs">
+            <summary>
+            Maximum number of arguments required for the function
             </summary>
         </member>
         <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionPercent">
@@ -6493,14 +6461,27 @@
             '*' Multiplication formula operator (2*3)
             </summary>
         </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMultiply.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue,Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue)">
+        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMultiply.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
             <summary>
-            Evaluates the the binary operator with the specified arguments and returns the result.
+            Evaluates the function against the arguments on the number stack
             </summary>
+            <param name="numberStack">Formula number stack containing function arguments</param>
+            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
+            <returns>An <see cref="T:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue"/> that represents the result of the function evaluation.</returns>
         </member>
         <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMultiply.Name">
             <summary>
             Function name used to reference the function in a formula
+            </summary>
+        </member>
+        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMultiply.MinArgs">
+            <summary>
+            Minimum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMultiply.MaxArgs">
+            <summary>
+            Maximum number of arguments required for the function
             </summary>
         </member>
         <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionDivide">
@@ -6508,14 +6489,27 @@
             '/' Division formula operator (3/2)
             </summary>
         </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionDivide.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue,Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue)">
+        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionDivide.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
             <summary>
-            Evaluates the the binary operator with the specified arguments and returns the result.
+            Evaluates the function against the arguments on the number stack
             </summary>
+            <param name="numberStack">Formula number stack containing function arguments</param>
+            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
+            <returns>An <see cref="T:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue"/> that represents the result of the function evaluation.</returns>
         </member>
         <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionDivide.Name">
             <summary>
             Function name used to reference the function in a formula
+            </summary>
+        </member>
+        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionDivide.MinArgs">
+            <summary>
+            Minimum number of arguments required for the function
+            </summary>
+        </member>
+        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionDivide.MaxArgs">
+            <summary>
+            Maximum number of arguments required for the function
             </summary>
         </member>
         <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionConcat">
@@ -8301,7 +8295,7 @@
             specified base.
             </summary>
             <remarks>
-            <p class="body">LOG(value, [base])</p>
+            <p class="body">LOG(value, base)</p>
             <p class="body">Value is a real number that you want to calculate the logarithm
             to <em>base</em> for. This number must be positive, as the logarithm
             is undefined for negative numbers.</p>
@@ -13811,133 +13805,6 @@
             Maximum number of arguments required for the function
             </summary>
         </member>
-        <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionCountA">
-            <summary>
-            Counts how many cells are not blank. 
-            </summary>
-            <remarks>
-            <p class="body">COUNTA(Value1, Value2, ..., ValueN)</p>
-            <p class="body">Value1, value2, ... valueN can be references to different data structures,
-            such as columns. Each non-blank value is counted.</p>
-            <p class="body">
-            When a reference is a range reference, only the non-blank values within the range will be counted.
-            </p>
-            </remarks>
-        </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionCountA.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
-            <summary>
-            Evaluates the function against the arguments on the number stack
-            </summary>
-            <param name="numberStack">Formula number stack containing function arguments</param>
-            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
-            <returns>An <see cref="T:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue"/> that represents the result of the function evaluation.</returns>
-        </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionCountA.CanParameterBeEnumerable(System.Int32)">
-            <summary>
-            Determines whether the parameter at the specified index will accept an enumerable reference.
-            </summary>
-            <param name="parameterIndex">In 0-based index of the parameter.</param>
-            <returns>
-            True if the parameter at the specified index can accept enumerable references; False otherwise or if the parameter is out of range for this function.
-            </returns>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionCountA.Name">
-            <summary>
-            Function name used to reference the function in a formula
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionCountA.MinArgs">
-            <summary>
-            Minimum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionCountA.MaxArgs">
-            <summary>
-            Maximum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionSearch">
-            <summary>
-            Returns the 1-based index of one string within another, searching case insensitively.
-            </summary>
-            <remarks>
-            <p class="body">SEARCH(search_text, value, [start_index])</p>
-            <p class="body">search_text is the text to find in value.</p>
-            <p class="body">value is the text in which to find search_text.</p>
-            <p class="body">start_index is the 1-based index in which to start the search (if omitted, the start_index is 1).</p>
-            </remarks>
-        </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionSearch.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
-            <summary>
-            Evaluates the function against the arguments on the number stack
-            </summary>
-            <param name="numberStack">Formula number stack containing function arguments</param>
-            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
-            <returns>An UltraCalcValue represents the result of the function evaluation.</returns>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionSearch.Name">
-            <summary>
-            Function name used to reference the function in a formula
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionSearch.MinArgs">
-            <summary>
-            Minimum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionSearch.MaxArgs">
-            <summary>
-            Maximum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionSearchB">
-            <summary>
-            Returns the 1-based index of one string within another, searching case insensitively.
-            </summary>
-            <remarks>
-            <p class="body">SEARCHB(search_text, value, [start_index])</p>
-            <p class="body">search_text is the text to find in value.</p>
-            <p class="body">value is the text in which to find search_text.</p>
-            <p class="body">start_index is the 1-based index in which to start the search (if omitted, the start_index is 1).</p>
-            </remarks>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionSearchB.Name">
-            <summary>
-            Function name used to reference the function in a formula
-            </summary>
-        </member>
-        <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionAveDev">
-            <summary>
-            Returns the average deviation from the average of all numeric values.
-            </summary>
-            <remarks>
-            <p class="body">AVEDEV(number1, number2, ...)</p>
-            <p class="body">Number1, number2, ... are one or more numeric values or references to numeric values.</p>
-            </remarks>
-        </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionAveDev.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
-            <summary>
-            Evaluates the function against the arguments on the number stack
-            </summary>
-            <param name="numberStack">Formula number stack containing function arguments</param>
-            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
-            <returns>An UltraCalcValue represents the result of the function evaluation.</returns>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionAveDev.Name">
-            <summary>
-            Function name used to reference the function in a formula
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionAveDev.MinArgs">
-            <summary>
-            Minimum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionAveDev.MaxArgs">
-            <summary>
-            Maximum number of arguments required for the function
-            </summary>
-        </member>
         <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionAddress.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
             <summary>
             Evaluates the function against the arguments on the number stack.
@@ -14215,29 +14082,6 @@
         <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionLookup.Name">
             <summary>
             Function name used to reference the function in a formula.
-            </summary>
-        </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMatch.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
-            <summary>
-            Evaluates the function against the arguments on the number stack
-            </summary>
-            <param name="numberStack">Formula number stack containing function arguments</param>
-            <param name="argumentCount">Denotes the number of function arguments pushed onto the number stack.</param>
-            <returns>An UltraCalcValue represents the result of the function evaluation.</returns>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMatch.Name">
-            <summary>
-            Function name used to reference the function in a formula
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMatch.MinArgs">
-            <summary>
-            Minimum number of arguments required for the function
-            </summary>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMatch.MaxArgs">
-            <summary>
-            Maximum number of arguments required for the function
             </summary>
         </member>
         <member name="M:Infragistics.Documents.Excel.CalcEngine.UltraCalcFunctionMdeterm.Evaluate(Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack,System.Int32)">
@@ -14693,11 +14537,6 @@
             Return the number of values on number stack
             </summary>
             <returns>Number of stack values</returns>
-        </member>
-        <member name="P:Infragistics.Documents.Excel.CalcEngine.ExcelCalcNumberStack.OwningCell">
-            <summary>
-            Gets the <see cref="T:Infragistics.Documents.Excel.WorksheetCell"/> instance whose formula is currently being solved.
-            </summary>
         </member>
         <member name="T:Infragistics.Documents.Excel.CalcEngine.UltraCalcReferenceCollection">
             <summary>
@@ -15431,13 +15270,6 @@
             <seealso cref="M:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue.ToDecimal(System.IFormatProvider)"/>
             <returns>A <b>Decimal</b> equivalent to the value of this instance</returns>
             <seealso cref="M:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue.ToDecimal(System.IFormatProvider)"/>
-        </member>
-        <member name="M:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue.ToDecimal(System.Decimal@)">
-            <summary>
-            Converts the <see cref="P:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue.Value"/> to a decimal data type
-            </summary>
-            <param name="result">The resulting decimal value. If the return value is false, the result is 0.</param>
-            <returns>True if the value was successfully converted to a decimal; otherwise false.</returns>
         </member>
         <member name="M:Infragistics.Documents.Excel.CalcEngine.ExcelCalcValue.ToDecimal(System.IFormatProvider)">
             <summary>
@@ -20195,6 +20027,12 @@
         <member name="F:Infragistics.Documents.Excel.Serialization.Excel2007.XLSX.Elements.CustomSheetViewElement.QualifiedName">
             <summary>http://schemas.openxmlformats.org/spreadsheetml/2006/main/customSheetView</summary>
         </member>
+        <member name="M:Infragistics.Documents.Excel.Serialization.Excel2007.XLSX.Elements.CustomSheetViewElement.Load(Infragistics.Documents.Excel.Serialization.Excel2007.Excel2007WorkbookSerializationManager,Infragistics.Documents.Excel.Serialization.Excel2007.ExcelXmlElement,System.String,System.Boolean@)">
+            <summary>Loads the data for this element from the specified manager.</summary>
+        </member>
+        <member name="M:Infragistics.Documents.Excel.Serialization.Excel2007.XLSX.Elements.CustomSheetViewElement.Save(Infragistics.Documents.Excel.Serialization.Excel2007.Excel2007WorkbookSerializationManager,Infragistics.Documents.Excel.Serialization.Excel2007.ExcelXmlElement,System.String@)">
+            <summary>Saves the data for this element to the specified manager.</summary>
+        </member>
         <member name="F:Infragistics.Documents.Excel.Serialization.Excel2007.XLSX.Elements.CustomSheetViewsElement.LocalName">
             <summary>customSheetViews</summary>
         </member>
@@ -22749,53 +22587,6 @@
             Use the standard Excel palette by matching the nearest color. 
             </summary>
         </member>
-        <member name="T:Infragistics.Documents.Excel.WorksheetColumnWidthUnit">
-            <summary>
-            Represents the various units in which a column width can be represented.
-            </summary>
-            <seealso cref="M:Infragistics.Documents.Excel.Worksheet.GetDefaultColumnWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-            <seealso cref="M:Infragistics.Documents.Excel.Worksheet.SetDefaultColumnWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-            <seealso cref="M:Infragistics.Documents.Excel.WorksheetColumn.GetWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-            <seealso cref="M:Infragistics.Documents.Excel.WorksheetColumn.SetWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-        </member>
-        <member name="F:Infragistics.Documents.Excel.WorksheetColumnWidthUnit.Character">
-            <summary>
-            The column width is represented in units of the '0' digit character width, including column padding. The digit is 
-            measured with the default font for the workbook. The padding is a few pixels on either side of the column plus an 
-            additional pixel for the gridline.
-            </summary>
-        </member>
-        <member name="F:Infragistics.Documents.Excel.WorksheetColumnWidthUnit.Character256th">
-            <summary>
-            The column width is represented in 256ths of the '0' digit character width, including column padding, which means this 
-            value will be 256 times the width expressed in Character units. The digit is measured with the default font for the 
-            workbook. The padding is a few pixels on either side of the column plus an additional pixel for the gridline. These 
-            units are the units in which the <see cref="P:Infragistics.Documents.Excel.WorksheetColumn.Width"/> and <see cref="P:Infragistics.Documents.Excel.Worksheet.DefaultColumnWidth"/> 
-            properties are expressed.
-            </summary>
-        </member>
-        <member name="F:Infragistics.Documents.Excel.WorksheetColumnWidthUnit.CharacterPaddingExcluded">
-            <summary>
-            The column width is represented in units of the '0' digit character width, excluding padding. The digit is measured with 
-            the default font for the workbook. These units are the units in which Microsoft Excel displays column widths to the user
-            and accepts new column widths from the user in the 'Column Width' dialog.
-            </summary>
-        </member>
-        <member name="F:Infragistics.Documents.Excel.WorksheetColumnWidthUnit.Pixel">
-            <summary>
-            The column width is represented in pixels.
-            </summary>
-        </member>
-        <member name="F:Infragistics.Documents.Excel.WorksheetColumnWidthUnit.Point">
-            <summary>
-            The column width is represented in points.
-            </summary>
-        </member>
-        <member name="F:Infragistics.Documents.Excel.WorksheetColumnWidthUnit.Twip">
-            <summary>
-            The column width is represented in twips (20ths of a point).
-            </summary>
-        </member>
         <member name="T:Infragistics.Documents.Excel.WorksheetView">
             <summary>
             Represents the various views for a worksheet.
@@ -24446,19 +24237,6 @@
             </exception>
             <value>The value which indicates the way cells in the workbook are referenced.</value>
         </member>
-        <member name="P:Infragistics.Documents.Excel.Workbook.Culture">
-            <summary>
-            Gets or sets the culture to use as the current culture for the workbook when doing any culture-aware conversions 
-            or comparisons.
-            </summary>
-            <remarks>
-            <p class="note">
-            <b>Note:</b> The culture is not saved or loaded in workbook files, so this is only used at when accessing and 
-            manipulating objects owned or associated with the Workbook.
-            </p>
-            </remarks>
-            <value>The current culture for the workbook or Null to use the thread's current culture.</value>
-        </member>
         <member name="P:Infragistics.Documents.Excel.Workbook.CurrentFormat">
             <summary>
             Gets the current format of the workbook. This is the format which will be used when saving and imposing format restrictions.
@@ -24960,25 +24738,6 @@
             </exception>
             <returns>A cell represented by the specified address.</returns>
         </member>
-        <member name="M:Infragistics.Documents.Excel.Worksheet.GetDefaultColumnWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)">
-            <summary>
-            Gets the default column width in the specified units.
-            </summary>
-            <remarks>
-            <p class="body">
-            If <paramref name="units"/> is Character256th, the value returned will be the same as the value of the 
-            <see cref="P:Infragistics.Documents.Excel.Worksheet.DefaultColumnWidth"/> property.
-            </p>
-            </remarks>
-            <param name="units">The units in which the width should be returned.</param>
-            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            <paramref name="units"/> is not defined in the <see cref="T:Infragistics.Documents.Excel.WorksheetColumnWidthUnit"/> enumeration.
-            </exception>
-            <returns>The default column width in the specified units.</returns>
-            <seealso cref="P:Infragistics.Documents.Excel.Worksheet.DefaultColumnWidth"/>
-            <seealso cref="M:Infragistics.Documents.Excel.Worksheet.SetDefaultColumnWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-            <seealso cref="M:Infragistics.Documents.Excel.WorksheetColumn.GetWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-        </member>
         <member name="M:Infragistics.Documents.Excel.Worksheet.GetRegion(System.String)">
             <summary>
             Gets the region at the specified address.
@@ -25104,22 +24863,6 @@
             <seealso cref="M:Infragistics.Documents.Excel.WorksheetCollection.IndexOf(Infragistics.Documents.Excel.Worksheet)"/>
             <seealso cref="P:Infragistics.Documents.Excel.Worksheet.Index"/>
         </member>
-        <member name="M:Infragistics.Documents.Excel.Worksheet.SetDefaultColumnWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)">
-            <summary>
-            Sets the default column width in the specified units.
-            </summary>
-            <param name="value">The default column width to set on the worksheet, expressed in the specified <paramref name="units"/>.</param>
-            <param name="units">The units in which the <paramref name="value"/> is expressed.</param>
-            <exception cref="T:System.ArgumentException">
-            <paramref name="value"/> is infinity or NaN.
-            </exception>
-            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            <paramref name="units"/> is not defined in the <see cref="T:Infragistics.Documents.Excel.WorksheetColumnWidthUnit"/> enumeration.
-            </exception>
-            <seealso cref="P:Infragistics.Documents.Excel.Worksheet.DefaultColumnWidth"/>
-            <seealso cref="M:Infragistics.Documents.Excel.Worksheet.GetDefaultColumnWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-            <seealso cref="M:Infragistics.Documents.Excel.WorksheetColumn.SetWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-        </member>
         <member name="P:Infragistics.Documents.Excel.Worksheet.Columns">
             <summary>
             Gets the collection of columns in the worksheet.
@@ -25156,25 +24899,18 @@
         </member>
         <member name="P:Infragistics.Documents.Excel.Worksheet.DefaultColumnWidth">
             <summary>
-            Gets or sets the default column width including padding, in 256ths of the '0' digit character width in the workbook's default font.
+            Gets or sets the default column width, in 1/256s of average character width.
             </summary>
             <remarks>
             <p class="body">
-            The default column width is the width of all columns which do not have their width set.
+            The default column width is the width of all columns which do not have their width explicitly set 
+            to a positive number.
             </p>
             <p class="body">
             The value assigned must be between 0 and 65535. Invalid values will be automatically adjusted to valid values.
             </p>
-            <p class="body">
-            Setting or getting this property is equivalent to calling <see cref="M:Infragistics.Documents.Excel.Worksheet.SetDefaultColumnWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/> 
-            or <see cref="M:Infragistics.Documents.Excel.Worksheet.GetDefaultColumnWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/> using the <see cref="T:Infragistics.Documents.Excel.WorksheetColumnWidthUnit"/> value of Character256th.
-            </p>
             </remarks>
-            <value>
-            The default column width including padding, in 256ths of the '0' digit character width in the workbook's default font.
-            </value>
-            <seealso cref="M:Infragistics.Documents.Excel.Worksheet.GetDefaultColumnWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-            <seealso cref="M:Infragistics.Documents.Excel.Worksheet.SetDefaultColumnWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
+            <value>The default column width, in 1/256s of average character width.</value>
             <seealso cref="P:Infragistics.Documents.Excel.WorksheetColumn.Width"/>
             <seealso cref="M:Infragistics.Documents.Excel.Workbook.CharacterWidth256thsToPixels(System.Double)"/>
             <seealso cref="M:Infragistics.Documents.Excel.Workbook.PixelsToCharacterWidth256ths(System.Double)"/>
@@ -25810,49 +25546,9 @@
             Represents a column in a Microsoft Excel worksheet.
             </summary>
         </member>
-        <member name="M:Infragistics.Documents.Excel.WorksheetColumn.GetWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)">
-            <summary>
-            Gets the column width in the specified units, or NaN if the column has the default width.
-            </summary>
-            <remarks>
-            <p class="body">
-            If <paramref name="units"/> is Character256th, the value returned will be the same as the value of the <see cref="P:Infragistics.Documents.Excel.WorksheetColumn.Width"/> 
-            property, with one exception: if the column has the default width, this method will return NaN and Width will return -1.
-            </p>
-            </remarks>
-            <param name="units">The units in which the width should be returned.</param>
-            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            <paramref name="units"/> is not defined in the <see cref="T:Infragistics.Documents.Excel.WorksheetColumnWidthUnit"/> enumeration.
-            </exception>
-            <returns>The column width in the specified units, or NaN if the column has the default width.</returns>
-            <seealso cref="P:Infragistics.Documents.Excel.WorksheetColumn.Width"/>
-            <seealso cref="M:Infragistics.Documents.Excel.WorksheetColumn.SetWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-            <seealso cref="M:Infragistics.Documents.Excel.Worksheet.GetDefaultColumnWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-        </member>
-        <member name="M:Infragistics.Documents.Excel.WorksheetColumn.SetWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)">
-            <summary>
-            Sets the column width in the specified units.
-            </summary>
-            <param name="value">The width to set on the column, expressed in the specified <paramref name="units"/>.</param>
-            <param name="units">The units in which the <paramref name="value"/> is expressed.</param>
-            <remarks>
-            <p class="body">
-            Setting a value of NaN will reset the column width so that the column uses the default column width of the worksheet.
-            </p>
-            </remarks>
-            <exception cref="T:System.ArgumentException">
-            <paramref name="value"/> is infinity.
-            </exception>
-            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            <paramref name="units"/> is not defined in the <see cref="T:Infragistics.Documents.Excel.WorksheetColumnWidthUnit"/> enumeration.
-            </exception>
-            <seealso cref="P:Infragistics.Documents.Excel.WorksheetColumn.Width"/>
-            <seealso cref="M:Infragistics.Documents.Excel.WorksheetColumn.GetWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-            <seealso cref="M:Infragistics.Documents.Excel.Worksheet.SetDefaultColumnWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-        </member>
         <member name="P:Infragistics.Documents.Excel.WorksheetColumn.Width">
             <summary>
-            Gets or sets the column width including padding, in 256ths of the '0' digit character width in the workbook's default font.
+            Gets or sets the column width, in 1/256s of average character width.
             </summary>
             <remarks>
             <p class="body">
@@ -25862,16 +25558,8 @@
             <p class="body">
             The value assigned must be between -1 and 65535. Invalid values will be automatically adjusted to valid values.
             </p>
-            <p class="body">
-            Setting or getting this property is equivalent to calling <see cref="M:Infragistics.Documents.Excel.WorksheetColumn.SetWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/> or <see cref="M:Infragistics.Documents.Excel.WorksheetColumn.GetWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/> using the 
-            <see cref="T:Infragistics.Documents.Excel.WorksheetColumnWidthUnit"/> value of Character256th.
-            </p>
             </remarks>
-            <value>
-            The column width including padding, in 256ths of the '0' digit character width in the workbook's default font.
-            </value>
-            <seealso cref="M:Infragistics.Documents.Excel.WorksheetColumn.GetWidth(Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
-            <seealso cref="M:Infragistics.Documents.Excel.WorksheetColumn.SetWidth(System.Double,Infragistics.Documents.Excel.WorksheetColumnWidthUnit)"/>
+            <value>The column width, in 1/256s of average character width.</value>
             <seealso cref="M:Infragistics.Documents.Excel.Workbook.CharacterWidth256thsToPixels(System.Double)"/>
             <seealso cref="M:Infragistics.Documents.Excel.Workbook.PixelsToCharacterWidth256ths(System.Double)"/>
         </member>

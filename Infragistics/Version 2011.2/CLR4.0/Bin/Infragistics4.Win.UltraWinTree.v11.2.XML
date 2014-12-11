@@ -7732,11 +7732,6 @@
             default constructor
             </summary>
         </member>
-        <member name="M:Infragistics.Win.UltraWinTree.LabelEditNode.ProcessDialogKey(System.Windows.Forms.Keys)">
-            <summary>
-            ProcessDialogKey
-            </summary>
-        </member>
         <member name="M:Infragistics.Win.UltraWinTree.LabelEditNode.ProcessKeyMessage(System.Windows.Forms.Message@)">
             <summary>
             Processes a key message
@@ -14349,11 +14344,6 @@
             </summary>
             <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
         </member>
-        <member name="M:Infragistics.Win.UltraWinTree.UltraTree.OnMouseLeave(System.EventArgs)">
-            <summary>
-            Raises the Leave event.
-            </summary>
-        </member>
         <member name="M:Infragistics.Win.UltraWinTree.UltraTree.IsInputChar(System.Char)">
             <summary>
             Returns true if the character should be sent directly to the control and not preprocessed, false otherwise.
@@ -14996,11 +14986,6 @@
             This method must be called after Infragistics.Win.UltraControlBase.BeginUpdate(). If BeginUpdate was called without a subsequent call to EndUpdate the control will not draw itself.  Note: Calling this method passing in false should only be done when it is known that the changes made between the Infragistics.Win.UltraControlBase.BeginUpdate() and EndUpdate calls did not require invalidation or dirtying of the elements or when the invalidation is being handled by the programmer.
             </p>
             </remarks>
-        </member>
-        <member name="M:Infragistics.Win.UltraWinTree.UltraTree.OnFontChanged(System.EventArgs)">
-            <summary>
-            Called when the font is changed.
-            </summary>
         </member>
         <member name="M:Infragistics.Win.UltraWinTree.UltraTree.Refresh">
             <summary>

@@ -391,7 +391,8 @@
             <p class="body">
             If the height and/or width properties are set to a neutral values (less than 0),
             this method returns an appropriate size for the box by measuring the string to be displayed
-            in the box, using the font specified in the TextStyle. 
+            in the box, using the font specified in the TextStyle.  This size is then multiplied by
+            an inflation factor (1.1) in order to provide spacing around the text.
             </p>
             </remarks>
             <returns>A Size object containing the Height and Width of the Rectangle which will represent this box annotation.</returns>

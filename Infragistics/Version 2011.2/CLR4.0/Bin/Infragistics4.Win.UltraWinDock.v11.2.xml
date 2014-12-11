@@ -6543,12 +6543,6 @@
             </summary>
             <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         </member>
-        <member name="M:Infragistics.Win.UltraWinDock.NavigatorForm.OnSizeChanged(System.EventArgs)">
-            <summary>
-            Raises the <see cref="E:System.Windows.Forms.Control.SizeChanged"/> event.
-            </summary>
-            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
-        </member>
         <member name="P:Infragistics.Win.UltraWinDock.NavigatorForm.Infragistics#Win#IOwnedForm#Owner">
             <summary>
             Interface implemented by a top level form.
@@ -6631,12 +6625,6 @@
             <summary>
             Returns a reference to the NavigatorList control which contains this element.
             </summary>
-        </member>
-        <member name="M:Infragistics.Win.UltraWinDock.NavigatorPanel.OnSizeChanged(System.EventArgs)">
-            <summary>
-            Raises the <see cref="E:System.Windows.Forms.Control.SizeChanged"/> event.
-            </summary>
-            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinDock.NavigatorPanelUIElement.InitAppearance(Infragistics.Win.AppearanceData@,Infragistics.Win.AppearancePropFlags@)">
             <summary>
